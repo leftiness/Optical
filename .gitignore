@@ -1,0 +1,10 @@
+# Compiled Server Files
+dist
+
+# Third Party Dependencies
+bower_components
+node_modules
+libs/*
+
+# Webstorm Files
+.idea
