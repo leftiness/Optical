@@ -1,26 +1,26 @@
 /*jshint expr: true*/
 
-'use strict';
+describe('HomeController', function () {
+	'use strict';
 
-describe('HomeController', function() {
+	var ctrl;
+	var scope;
 
-    var ctrl, scope;
+	beforeEach(angular.mock.module('myApp'));
 
-    beforeEach(angular.mock.module('myApp'));
+	beforeEach(function () {
 
-    beforeEach(function() {
+		angular.mock.inject(function ($controller, $rootScope) {
+			scope = $rootScope.$new();
+			ctrl = $controller('HomeCtrl', {
+				$scope: scope
+			});
+		});
 
-        angular.mock.inject(function($controller, $rootScope) {
-            scope = $rootScope.$new();
-            ctrl = $controller('HomeCtrl', {
-                $scope: scope
-            });
-        });
+	});
 
-    });
-
-    it('should exist', function() {
-        expect(ctrl).to.not.be.undefined;
-    });
+	it('should exist', function () {
+		expect(ctrl).to.not.be.undefined;
+	});
 
 });

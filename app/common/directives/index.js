@@ -1,4 +1,2 @@
-'use strict';
-
 module.exports = angular.module('common.directives', [])
-    .directive('directiveName', require('./directiveName.js'));
+	.directive('directiveName', require('./directiveName.js'));
