@@ -97,8 +97,10 @@ function handleError(err, self) {
 // =======================================================================
 // Server Task
 // =======================================================================  
-var express = require('express'),
-	server = express();
+var express = require('express');
+var prism = require('connect-prism');
+var server = express();
+
 // Server settings
 server.use(express.static(filePath.build.dest));
 // Redirects everything back to our index.html
@@ -108,24 +110,30 @@ server.all('/*', function (req, res) {
 		root: filePath.build.dest
 	});
 });
-// uncomment the "middleware" section when you are ready to connect to an API
+
+prism.create({
+	name: 'mock',
+	mode: 'mock',
+	context: '/api',
+	host: 'localhost',
+	mockFilenameGenerator: 'humanReadable',
+	port: 5000
+});
+
+prism.useVerboseLog();
+
 gulp.task('server', function () {
 	'use strict';
 	connect.server({
 		root: filePath.build.dest,
 		fallback: filePath.build.dest + '/index.html',
 		port: 5000,
-		livereload: true
-		// ,
-		// middleware: function(connect, o) {
-		//	 return [ (function() {
-		//		 var url = require('url');
-		//		 var proxy = require('proxy-middleware');
-		//		 var options = url.parse('http://localhost:3000/'); // path to your dev API
-		//		 options.route = '/api';
-		//		 return proxy(options);
-		//	 })() ];
-		// }
+		livereload: true,
+		middleware: function (connect, o) {
+			return [
+				prism.middleware
+			];
+		}
 	});
 });
 
