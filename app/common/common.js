@@ -10,6 +10,9 @@ require('angular-sanitize');
 require('domready/ready');
 require('lodash');
 require('restangular');
+require('angular-aria');
+require('angular-animate');
+require('angular-material');
 
 module.exports = angular.module('common',
 	[
@@ -20,6 +23,7 @@ module.exports = angular.module('common',
 		'ngResource',
 		'ngSanitize',
 		'restangular',
+		'ngMaterial',
 		require('./elements/header').name,
 		require('./elements/footer').name,
 		require('./constants').name,

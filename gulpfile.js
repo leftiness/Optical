@@ -52,7 +52,6 @@ var filePath = {
 		dest: './dist/images/'
 	},
 	vendorJS: {
-		// These files will be bundled into a single vendor.js file that's called at the bottom of index.html
 		src: [
 			'./libs/angular/angular.js',
 			'./libs/angular-animate/angular-animate.js',
@@ -65,13 +64,18 @@ var filePath = {
 			'./libs/bootstrap/dist/js/bootstrap.js',
 			'./libs/domready/ready.js',
 			'./libs/lodash/lodash.js',
-			'./libs/restangular/dist/restangular.js'
+			'./libs/restangular/dist/restangular.js',
+			'./libs/angular-aria/angular-aria.js',
+			'./libs/angular-animate/angular-animate.js',
+			'./libs/angular-material/angular-material.js',
+			'./libs/angular-cookies/angular-cookies.js'
 		]
 	},
 	vendorCSS: {
 		src: [
-			'./libs/bootstrap/dist/css/bootstrap.css', // v3.1.1
-			'./libs/font-awesome/css/font-awesome.css' // v4.1.0
+			'./libs/bootstrap/dist/css/bootstrap.css',
+			'./libs/font-awesome/css/font-awesome.css',
+			'./libs/angular-material/angular-material.css'
 		]
 	},
 	copyIndex: {
