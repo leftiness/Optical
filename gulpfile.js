@@ -51,6 +51,10 @@ var filePath = {
 		watch: ['./app/assets/images', './app/assets/images/**/*'],
 		dest: './dist/images/'
 	},
+	fonts: {
+		src: './libs/font-awesome/fonts/*',
+		dest: './dist/fonts'
+	},
 	vendorJS: {
 		src: [
 			'./libs/angular/angular.js',
@@ -290,6 +294,18 @@ gulp.task('images', function () {
 
 
 // =======================================================================
+// Fonts Task
+// ======================================================================= 
+gulp.task('fonts', function () {
+	'use strict';
+	return gulp.src(filePath.fonts.src)
+		.on('error', handleError)
+		.pipe(gulp.dest(filePath.fonts.dest))
+		.pipe(connect.reload());
+});
+
+
+// =======================================================================
 // Vendor JS Task
 // =======================================================================  
 gulp.task('vendorJS', function () {
@@ -361,7 +377,7 @@ gulp.task('watch', function () {
 // =======================================================================
 // Karma Configuration
 // =======================================================================
-gulp.task('karma', function(done) {
+gulp.task('karma', function (done) {
 	karma.start({
 		configFile: __dirname + '/karma.conf.js'
 	}, done);
@@ -399,7 +415,7 @@ gulp.task('build-prod', function (callback) {
 	'use strict';
 	runSequence(
 		['clean-full', 'lint', 'checkstyle'],
-		['bundle-prod', 'styles-prod', 'images', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
+		['bundle-prod', 'styles-prod', 'images', 'fonts', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
 		['server'],
 		callback
 	);
@@ -410,7 +426,7 @@ gulp.task('build', function (callback) {
 	'use strict';
 	runSequence(
 		['clean-full', 'lint', 'checkstyle'],
-		['bundle-dev', 'styles-dev', 'images', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
+		['bundle-dev', 'styles-dev', 'images', 'fonts', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
 		['server', 'watch'],
 		callback
 	);
