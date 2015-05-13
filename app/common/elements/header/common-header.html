@@ -1,21 +1,29 @@
-<header class="header">
-	<nav class="navbar navbar-inverse">
-	  <div class="container">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="navbar">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		  </button>
-		  <a class="navbar-brand" ui-sref="home">myApp</a>
-		</div>
-		<div id="navbar" class="collapse navbar-collapse">
-		  <ul class="nav navbar-nav">
-			<li ui-sref-active="active"><a ui-sref="home">Home</a></li>
-			<li ui-sref-active="active"><a ui-sref="pages.about">About</a></li>
-		  </ul>
-		</div><!--/.nav-collapse -->
-	  </div>
-	</nav>
-</header>
+<md-toolbar layout="row"
+			class="header"
+			md-scroll-shrink
+			>
+	
+	<md-button layout="column"
+			   layout-align="center"
+			   layout-margin
+			   layout-padding
+			   ng-click="toggleMenu()"
+			   aria-label="[Menu]"
+			   hide-gt-lg
+			   >
+		
+		<md-icon md-font-icon="fa fa-bars fa-3x"></md-icon>
+	</md-button>
+	
+	<h2 flex
+		layout-margin
+		layout-padding
+		layout="column"
+		layout-align="center"
+		layout-margin
+		layout-padding
+		>
+		Header todo
+	</h2>
+	
+</md-toolbar>

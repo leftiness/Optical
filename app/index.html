@@ -3,31 +3,57 @@
 	<head>
 		<base href="/">
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, maximum-scale = 1.0">
-		<meta name="fragment" content="!" />
+		<meta name="viewport"
+			  content="width=device-width, maximum-scale = 1.0"
+			  />
+		<meta name="fragment" 
+			  content="!" 
+			  />
 
 		<title ng-bind="'SiteName - ' + pageTitle"></title>
-		<meta name="description" content="{{pageDescription}}">
+		<meta name="description" 
+			  content="{{pageDescription}}"
+			  />
 
-		<link href="/vendor.css" rel="stylesheet">
-		<link href="/app.css" rel="stylesheet">
+		<link href="/vendor.css" 
+			  rel="stylesheet"
+			  />
+		<link href="/app.css" 
+			  rel="stylesheet"
+			  />
 	</head>
 
-	<body ng-class="bodyClasses" ng-controller="MainCtrl">
+	<body ng-class="bodyClasses"
+		  ng-controller="MainCtrl"
+		  layout="row"
+		  >
 
-		<div class="page">
+		<common-sidenav></common-sidenav>
+		
+		<div layout="column" 
+			 flex
+			 >
+			
 			<common-header></common-header>
 
-			<section class="main">
-				<div ui-view autoscroll="false" id="ui-view"></div>
-			</section>
-
-			<common-footer></common-footer>
+			<div layout="row">
+				<md-content flex>
+					<div ui-view
+						 autoscroll="false"
+						 id="ui-view"
+						 layout-padding
+						 layout-margin 
+						 >
+					</div>
+					<common-footer></common-footer>
+				</md-content>
+				
+			</div>
 		</div>
-
+		
 		<script src="/vendor.js"></script>
 		<script src="/bundle.js"></script>
-
+		
 	</body>
 
 </html>
