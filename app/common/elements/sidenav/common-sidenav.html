@@ -1,0 +1,38 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2"
+			md-component-id="sidenav"
+			md-is-locked-open="$mdMedia('gt-lg')"
+			>
+	
+	<md-toolbar class="md-theme-indigo">
+		<h2 layout-margin
+			layout-padding 
+			layout-margin 
+			>
+			Optical
+		</h2>
+	</md-toolbar>
+	
+	<md-content>
+		<md-list layout="column">
+			<md-item ng-repeat="page in pages"
+					 layout="row"
+					 flex
+					 >
+
+				<md-button flex>
+					<md-item-content>
+						<div class="md-tile-content" 
+							 layout="row"
+							 layout-align="start center"
+							 >
+							{{page.name}}
+						</div>
+					</md-item-content>
+				</md-button>
+
+				<md-divider ng-if="!$last"></md-divider>
+			</md-item>
+		</md-list>
+	</md-content>
+	
+</md-sidenav>

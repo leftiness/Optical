@@ -1,0 +1,14 @@
+{
+	"requestUrl": "/api/pages",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": [
+		{
+			"name": "such page"
+		}, {
+			"name": "very button"
+		}, {
+			"name": "wow"
+		}
+	]
+}
