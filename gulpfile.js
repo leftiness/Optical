@@ -72,7 +72,8 @@ var filePath = {
 			'./libs/angular-aria/angular-aria.js',
 			'./libs/angular-animate/angular-animate.js',
 			'./libs/angular-material/angular-material.js',
-			'./libs/angular-cookies/angular-cookies.js'
+			'./libs/angular-cookies/angular-cookies.js',
+			'./libs/angular-smart-table/dist/smart-table.js'
 		]
 	},
 	vendorCSS: {

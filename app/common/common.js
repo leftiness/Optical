@@ -13,6 +13,7 @@ require('restangular');
 require('angular-aria');
 require('angular-animate');
 require('angular-material');
+require('angular-smart-table');
 
 module.exports = angular.module('common',
 	[
@@ -24,6 +25,7 @@ module.exports = angular.module('common',
 		'ngSanitize',
 		'restangular',
 		'ngMaterial',
+		'smart-table',
 		require('./elements/header').name,
 		require('./elements/footer').name,
 		require('./elements/sidenav').name,
