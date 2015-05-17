@@ -1,0 +1,49 @@
+<div class="modules-lenses-view">
+	<div class="module-header">
+		<table st-table="data" st-safe-src="safeData" class="table table-striped">
+			<thead>
+				<tr>
+					<th ng-repeat="field in fields"
+						st-sort="{{field.name}}"
+						>
+						{{field.name}}
+					</th>
+				</tr>
+				<tr>
+					<th ng-repeat="field in fields" 
+						ng-switch on="field.type"
+						>
+						<div ng-switch-when="select">
+							<md-select placeholder="pick one" 
+									   ng-model="someVal"
+									   >
+								<md-option ng-repeat="value in field.values"
+										   value="{{value}}"
+										   >
+									{{value}}
+								</md-option>
+							</md-select>
+						</div>
+						<div ng-switch-when="checkbox">
+							<md-checkbox></md-checkbox>
+						</div>
+						<div ng-switch-default>
+							<md-input-container md-no-float>
+								<input type="{{field.type}}"
+									   placeholder="type here"
+									   >
+							</md-input-container>
+						</div>						
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in data">
+					<td ng-repeat="field in fields">
+						{{row[field.name]}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
