@@ -1,12 +1,12 @@
 function SidenavCtrl($scope, $mdSidenav, Restangular) {
 	'use strict';
-	var list = Restangular.all('pages');
+	var list = Restangular.all('lenses');
 	list.getList().then(
-		function (pages) {
-			$scope.pages = pages;
+		function (lenses) {
+			$scope.lenses = lenses;
 		},
 		function () {
-			$scope.pages = [];
+			$scope.lenses = [];
 		}
 	);
 }

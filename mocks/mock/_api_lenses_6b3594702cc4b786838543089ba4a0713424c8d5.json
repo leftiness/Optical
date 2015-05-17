@@ -1,0 +1,9 @@
+{
+	"requestUrl": "/api/lenses",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": [
+		{"name": "circles"},
+		{"name": "squares"}
+	]
+}

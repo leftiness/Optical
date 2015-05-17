@@ -1,0 +1,31 @@
+{
+	"requestUrl": "/api/lenses/circles",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": {
+		"fields": [
+			{
+				"name": "size",
+				"type": "text",
+				"regex": "[0-9]*"
+			}, {
+				"name": "color",
+				"type": "select",
+				"values": ["red", "blue", "yellow"]
+			}
+		],
+		"data": [
+			{
+				"size": "0",
+				"color": "red"
+			}, {
+				"size": "10",
+				"color": "yellow",
+				"foo": "This shouldn't show"
+			}, {
+				"size": "100",
+				"color": ""
+			}
+		]
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"requestUrl": "/api/lenses/squares",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": {
+		"fields": [
+			{
+				"name": "area",
+				"type": "text"
+			}, {
+				"name": "color",
+				"type": "select",
+				"values": ["red", "blue", "yellow"]
+			}, {
+				"name": "happy",
+				"type": "checkbox"
+			}
+		],
+		"data": [
+			{
+				"area": "0",
+				"color": "blue",
+				"happy": true
+			}, {
+				"color": "yellow"
+			}, {
+				"size": "10"
+			}
+		]
+	}
+}
