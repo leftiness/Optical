@@ -6,11 +6,13 @@
 		"fields": [
 			{
 				"name": "size",
-				"type": "number"
+				"type": "number",
+				"order": 1
 			}, {
 				"name": "color",
 				"type": "select",
-				"values": ["red", "blue", "yellow"]
+				"values": ["red", "blue", "yellow"],
+				"order": 2
 			}
 		],
 		"data": [

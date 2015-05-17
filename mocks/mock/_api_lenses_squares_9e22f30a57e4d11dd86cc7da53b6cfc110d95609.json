@@ -6,14 +6,17 @@
 		"fields": [
 			{
 				"name": "area",
-				"type": "text"
+				"type": "text",
+				"order": 3
 			}, {
 				"name": "color",
 				"type": "select",
-				"values": ["red", "blue", "yellow"]
+				"values": ["red", "blue", "yellow"],
+				"order": 2
 			}, {
 				"name": "happy",
-				"type": "checkbox"
+				"type": "checkbox",
+				"order": 1
 			}
 		],
 		"data": [

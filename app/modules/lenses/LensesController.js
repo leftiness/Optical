@@ -3,7 +3,7 @@ function LensesCtrl($scope, $stateParams, Restangular) {
 	$scope.params = $stateParams;
 	Restangular.one('lenses', $stateParams.id).get().then(
 		function (lens) {
-			$scope.fields = lens.fields;
+			$scope.fields = _.sortBy(lens.fields, 'order');
 			$scope.safeData = lens.data;
 			$scope.data = [].concat($scope.safeData);
 		},
