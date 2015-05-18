@@ -1,0 +1,68 @@
+{
+	"requestUrl": "/api/lenses/lenses/records",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": [
+		{
+			"id": 0,
+			"name": "lenses",
+			"visible": [
+				{
+					"type": "role",
+					"name": "administrators"
+				}, {
+					"type": "role",
+					"name": "users"
+				}
+			],
+			"editable": [
+				{
+					"type": "role",
+					"name": "administrators"
+				}
+			],
+			"order": 0
+		}, {
+			"id": 1,
+			"name": "circles",
+			"visible": [
+				{
+					"type": "role",
+					"name": "administrators"
+				}, {
+					"type": "role",
+					"name": "users"
+				}
+			],
+			"editable": [
+				{
+					"type": "role",
+					"name": "administrators"
+				}, {
+					"type": "user",
+					"name": "john"
+				}
+			],
+			"order": 2
+		}, {
+			"id": 2,
+			"name": "squares",
+			"visible": [
+				{
+					"type": "role",
+					"name": "administrators"
+				}, {
+					"type": "role",
+					"name": "users"
+				}
+			],
+			"editable": [
+				{
+					"type": "role",
+					"name": "administrators"
+				}
+			],
+			"order": 1
+		}
+	]
+}

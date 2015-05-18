@@ -1,0 +1,21 @@
+{
+	"requestUrl": "/api/lenses/circles/records",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": [
+		{
+			"id": 0,
+			"size": "0",
+			"color": "red"
+		}, {
+			"id": 1,
+			"size": "10",
+			"color": "yellow",
+			"foo": "This shouldn't show"
+		}, {
+			"id": 2,
+			"size": "100",
+			"color": ""
+		}
+	]
+}

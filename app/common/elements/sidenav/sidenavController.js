@@ -1,9 +1,8 @@
-function SidenavCtrl($scope, $mdSidenav, Restangular) {
+function SidenavCtrl($scope, $mdSidenav, Restangular, CONSTANTS) {
 	'use strict';
-	var list = Restangular.all('lenses');
-	list.getList().then(
+	Restangular.one('lenses', 'lenses').getList('records').then(
 		function (lenses) {
-			$scope.lenses = lenses;
+			$scope.lenses = CONSTANTS.lodash.sortBy(lenses, 'order');
 		},
 		function () {
 			$scope.lenses = [];
@@ -11,6 +10,6 @@ function SidenavCtrl($scope, $mdSidenav, Restangular) {
 	);
 }
 
-SidenavCtrl.$inject = ['$scope', '$mdSidenav', 'Restangular'];
+SidenavCtrl.$inject = ['$scope', '$mdSidenav', 'Restangular', 'CONSTANTS'];
 
 module.exports = SidenavCtrl;

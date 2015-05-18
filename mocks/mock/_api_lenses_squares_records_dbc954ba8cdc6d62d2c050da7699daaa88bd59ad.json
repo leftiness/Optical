@@ -1,0 +1,19 @@
+{
+	"requestUrl": "/api/lenses/squares/records",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": [
+		{
+			"id": 0,
+			"area": "0",
+			"color": "blue",
+			"happy": true
+		}, {
+			"id": 1,
+			"color": "yellow"
+		}, {
+			"id": 2,
+			"size": "10"
+		}
+	]
+}

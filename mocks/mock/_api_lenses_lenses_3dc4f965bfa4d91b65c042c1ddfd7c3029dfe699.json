@@ -1,0 +1,28 @@
+{
+	"requestUrl": "/api/lenses/lenses",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": [
+		{
+			"id": 0,
+			"name": "name",
+			"type": "text",
+			"order": 0
+		}, {
+			"id": 1,
+			"name": "order",
+			"type": "number",
+			"order": 2
+		}, {
+			"id": 2,
+			"name": "visible",
+			"type": "lens",
+			"order": 3
+		}, {
+			"id": 3,
+			"name": "editable",
+			"type": "lens",
+			"order": 4
+		}
+	]
+}

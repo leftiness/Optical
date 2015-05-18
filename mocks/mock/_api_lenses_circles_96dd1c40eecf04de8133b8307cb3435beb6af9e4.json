@@ -1,32 +1,19 @@
 {
-	"requestUrl": "/api/lenses/circles",
-	"contentType": "application/javascript",
-	"statusCode": 200,
-	"data": {
-		"fields": [
-			{
-				"name": "size",
-				"type": "number",
-				"order": 1
-			}, {
-				"name": "color",
-				"type": "select",
-				"values": ["red", "blue", "yellow"],
-				"order": 2
-			}
-		],
-		"data": [
-			{
-				"size": "0",
-				"color": "red"
-			}, {
-				"size": "10",
-				"color": "yellow",
-				"foo": "This shouldn't show"
-			}, {
-				"size": "100",
-				"color": ""
-			}
-		]
-	}
+  "requestUrl": "/api/lenses/circles",
+  "contentType": "application/javascript",
+  "statusCode": 200,
+  "data": [
+		{
+			"id": 0,
+			"name": "size",
+			"type": "number",
+			"order": 0
+		}, {
+			"id": 1,
+			"name": "color",
+			"type": "select",
+			"values": ["red", "blue", "yellow"],
+			"order": 1
+		}
+	]
 }

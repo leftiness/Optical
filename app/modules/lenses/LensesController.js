@@ -1,20 +1,27 @@
-function LensesCtrl($scope, $stateParams, Restangular) {
+function LensesCtrl($scope, $stateParams, Restangular, CONSTANTS) {
 	'use strict';
 	$scope.params = $stateParams;
-	Restangular.one('lenses', $stateParams.id).get().then(
-		function (lens) {
-			$scope.fields = _.sortBy(lens.fields, 'order');
-			$scope.safeData = lens.data;
-			$scope.data = [].concat($scope.safeData);
+	Restangular.one('lenses', $stateParams.id).getList('records').then(
+		function (records) {
+			$scope.safeRecords = records;
+			$scope.records = [].concat($scope.safeRecords);
 		},
 		function () {
-			$scope.fields = [];
-			$scope.safeData = [];
-			$scope.data = [];
+			$scope.safeRecords = [];
+			$scope.records = [];
+		}
+	);
+
+	Restangular.one('lenses', $stateParams.id).getList().then(
+		function (knobs) {
+			$scope.knobs = CONSTANTS.lodash.sortBy(knobs, 'order');
+		},
+		function () {
+			$scope.knobs = [];
 		}
 	);
 }
 
-LensesCtrl.$inject = ['$scope', '$stateParams', 'Restangular'];
+LensesCtrl.$inject = ['$scope', '$stateParams', 'Restangular', 'CONSTANTS'];
 
 module.exports = LensesCtrl;

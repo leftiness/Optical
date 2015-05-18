@@ -1,23 +1,26 @@
 <div class="modules-lenses-view">
 	<div class="module-header">
-		<table st-table="data" st-safe-src="safeData" class="table table-striped">
+		<table st-table="records" 
+			   st-safe-src="safeRecords" 
+			   class="table table-striped"
+			   >
 			<thead>
 				<tr>
-					<th ng-repeat="field in fields"
-						st-sort="{{field.name}}"
+					<th ng-repeat="knob in knobs"
+						st-sort="{{knob.name}}"
 						>
-						{{field.name}}
+						{{knob.name}}
 					</th>
 				</tr>
 				<tr>
-					<th ng-repeat="field in fields" 
-						ng-switch on="field.type"
+					<th ng-repeat="knob in knobs" 
+						ng-switch on="knob.type"
 						>
 						<div ng-switch-when="select">
 							<md-select placeholder="pick one" 
 									   ng-model="someVal"
 									   >
-								<md-option ng-repeat="value in field.values"
+								<md-option ng-repeat="value in knob.values"
 										   value="{{value}}"
 										   >
 									{{value}}
@@ -29,7 +32,7 @@
 						</div>
 						<div ng-switch-default>
 							<md-input-container md-no-float>
-								<input type="{{field.type}}"
+								<input type="{{knob.type}}"
 									   placeholder="type here"
 									   >
 							</md-input-container>
@@ -38,9 +41,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="row in data">
-					<td ng-repeat="field in fields">
-						{{row[field.name]}}
+				<tr ng-repeat="record in records">
+					<td ng-repeat="knob in knobs">
+						{{record[knob.name]}}
 					</td>
 				</tr>
 			</tbody>
