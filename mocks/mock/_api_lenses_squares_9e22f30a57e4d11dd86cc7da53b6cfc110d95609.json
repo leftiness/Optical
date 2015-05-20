@@ -1,21 +1,26 @@
 {
-  "requestUrl": "/api/lenses/squares",
-  "contentType": "application/javascript",
-  "statusCode": 200,
-  "data": [
+	"requestUrl": "/api/lenses/squares",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": [
 		{
 			"id": 0,
+			"name": "id",
+			"type": "text",
+			"order": 0
+		}, {
+			"id": 1,
 			"name": "area",
 			"type": "text",
 			"order": 2
 		}, {
-			"id": 1,
+			"id": 2,
 			"name": "color",
 			"type": "select",
 			"values": ["red", "blue", "yellow"],
-			"order": 0
+			"order": 3
 		}, {
-			"id": 2,
+			"id": 3,
 			"name": "happy",
 			"type": "checkbox",
 			"order": 1

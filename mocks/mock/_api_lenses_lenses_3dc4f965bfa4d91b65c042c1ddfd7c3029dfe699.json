@@ -5,24 +5,24 @@
 	"data": [
 		{
 			"id": 0,
-			"name": "name",
+			"name": "id",
 			"type": "text",
 			"order": 0
 		}, {
 			"id": 1,
+			"name": "name",
+			"type": "text",
+			"order": 1
+		}, {
+			"id": 2,
 			"name": "order",
 			"type": "number",
 			"order": 2
 		}, {
-			"id": 2,
-			"name": "visible",
+			"id": 3,
+			"name": "permissions",
 			"type": "lens",
 			"order": 3
-		}, {
-			"id": 3,
-			"name": "editable",
-			"type": "lens",
-			"order": 4
 		}
 	]
 }

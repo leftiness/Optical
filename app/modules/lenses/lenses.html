@@ -1,52 +1,74 @@
-<div class="modules-lenses-view">
-	<div class="module-header">
-		<table st-table="records" 
-			   st-safe-src="safeRecords" 
-			   class="table table-striped"
-			   >
-			<thead>
-				<tr>
-					<th ng-repeat="knob in knobs"
-						st-sort="{{knob.name}}"
-						>
-						{{knob.name}}
-					</th>
-				</tr>
-				<tr>
-					<th ng-repeat="knob in knobs" 
-						ng-switch on="knob.type"
-						>
-						<div ng-switch-when="select">
-							<md-select placeholder="pick one" 
-									   ng-model="someVal"
+<div class="modules-lenses-view module-header">
+	<table st-table="records" 
+		   st-safe-src="safeRecords" 
+		   class="table table-striped"
+		   >
+		<thead>
+			<tr>
+				<th ng-repeat="knob in knobs"
+					st-sort="{{knob.name}}"
+					st-skip-natural="true"
+					>
+					{{knob.name}}
+				</th>
+			</tr>
+			<tr>
+				<th ng-repeat="knob in knobs" 
+					ng-switch on="knob.type"
+					>
+					<div ng-switch-when="select">
+						<md-select placeholder="pick one" 
+								   ng-model="query[knob.name]"
+								   st-search="{{knob.name}}"
+								   >
+							<md-option value="">pick one</md-option>
+							<md-option ng-repeat="value in knob.values"
+									   value="{{value}}"
 									   >
-								<md-option ng-repeat="value in knob.values"
-										   value="{{value}}"
-										   >
-									{{value}}
-								</md-option>
-							</md-select>
-						</div>
-						<div ng-switch-when="checkbox">
-							<md-checkbox></md-checkbox>
-						</div>
-						<div ng-switch-default>
-							<md-input-container md-no-float>
-								<input type="{{knob.type}}"
-									   placeholder="type here"
-									   >
-							</md-input-container>
-						</div>						
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="record in records">
-					<td ng-repeat="knob in knobs">
+								{{value}}
+							</md-option>
+						</md-select>
+					</div>
+					<div ng-switch-when="checkbox">
+						<md-checkbox ng-model="query[knob.name]"
+									 st-search="{{knob.name}}"
+									 >
+						</md-checkbox>
+					</div>
+					<div ng-switch-when="lens"></div>
+					<div ng-switch-default>
+						<md-input-container md-no-float>
+							<input type="{{knob.type}}"
+								   placeholder="type here"
+								   ng-model="query[knob.name]"
+								   st-search="{{knob.name}}"
+								   >
+						</md-input-container>
+					</div>						
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="record in records">
+				<td ng-repeat="knob in knobs">
+					<div ng-if="knob.type === 'lens'">
+						<md-button class="md-primary md-raised"
+								   ui-sref="lenses(
+											{ id: knob.name 
+											+ '!' 
+											+ params.id
+											, q: 'parent:' 
+											+ record.id
+											})"
+								   >
+							>>
+						</md-button>
+					</div>
+					<div ng-if="knob.type !== 'lens'">
 						{{record[knob.name]}}
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

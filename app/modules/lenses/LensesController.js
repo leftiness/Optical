@@ -1,6 +1,7 @@
 function LensesCtrl($scope, $stateParams, Restangular, CONSTANTS) {
 	'use strict';
 	$scope.params = $stateParams;
+	$scope.query = {};
 	Restangular.one('lenses', $stateParams.id).getList('records').then(
 		function (records) {
 			$scope.safeRecords = records;

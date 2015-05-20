@@ -1,0 +1,38 @@
+{
+	"requestUrl": "/api/lenses/permissions!lenses",
+	"contentType": "application/javascript",
+	"statusCode": 200,
+	"data": [
+		{
+			"id": 0,
+			"name": "id",
+			"type": "text",
+			"order": 0
+		}, {
+			"id": 1,
+			"name": "parent",
+			"type": "text",
+			"order": 1
+		}, {
+			"id": 2,
+			"name": "type",
+			"type": "text",
+			"order": 2
+		}, {
+			"id": 3,
+			"name": "value",
+			"type": "text",
+			"order": 3
+		}, {
+			"id": 4,
+			"name": "view",
+			"type": "checkbox",
+			"order": 4
+		}, {
+			"id": 5,
+			"name": "edit",
+			"type": "checkbox",
+			"order": 5
+		}
+	]
+}

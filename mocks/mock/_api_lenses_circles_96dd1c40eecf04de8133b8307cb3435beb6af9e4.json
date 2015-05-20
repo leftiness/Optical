@@ -5,15 +5,20 @@
   "data": [
 		{
 			"id": 0,
-			"name": "size",
-			"type": "number",
+			"name": "id",
+			"type": "text",
 			"order": 0
 		}, {
 			"id": 1,
+			"name": "size",
+			"type": "number",
+			"order": 1
+		}, {
+			"id": 2,
 			"name": "color",
 			"type": "select",
 			"values": ["red", "blue", "yellow"],
-			"order": 1
+			"order": 2
 		}
 	]
 }
