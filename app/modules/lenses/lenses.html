@@ -1,6 +1,6 @@
 <div class="modules-lenses-view module-header">
 	<table st-table="records" 
-		   st-safe-src="safeRecords" 
+		   st-safe-src="safeRecords"
 		   class="table table-striped"
 		   >
 		<thead>
@@ -20,6 +20,7 @@
 						<md-select placeholder="pick one" 
 								   ng-model="query[knob.name]"
 								   st-search="{{knob.name}}"
+								   st-delay="0"
 								   >
 							<md-option value="">pick one</md-option>
 							<md-option ng-repeat="value in knob.values"
@@ -32,6 +33,7 @@
 					<div ng-switch-when="checkbox">
 						<md-checkbox ng-model="query[knob.name]"
 									 st-search="{{knob.name}}"
+									 st-delay="0"
 									 >
 						</md-checkbox>
 					</div>
@@ -42,6 +44,7 @@
 								   placeholder="type here"
 								   ng-model="query[knob.name]"
 								   st-search="{{knob.name}}"
+								   st-delay="0"
 								   >
 						</md-input-container>
 					</div>						
@@ -49,7 +52,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="record in records">
+			<tr ng-repeat="record in records"
+				st-select-row="record"
+				st-select-mode="multiple"
+				>
 				<td ng-repeat="knob in knobs">
 					<div ng-if="knob.type === 'lens'">
 						<md-button class="md-primary md-raised"
