@@ -2,16 +2,17 @@
 			md-component-id="sidenav"
 			md-is-locked-open="$mdMedia('gt-lg')"
 			>
-	
+
 	<md-toolbar class="md-theme-indigo">
 		<h2 layout-margin
-			layout-padding 
-			layout-margin 
+			layout-padding
+			layout-margin
+			ui-sref="home"
 			>
 			Optical
 		</h2>
 	</md-toolbar>
-	
+
 	<md-content>
 		<md-list layout="column">
 			<md-list-item ng-repeat="lens in lenses"
@@ -23,7 +24,7 @@
 						   ui-sref-active="md-primary"
 						   >
 					<md-item-content>
-						<div class="md-tile-content" 
+						<div class="md-tile-content"
 							 layout="row"
 							 layout-align="start center"
 							 >
@@ -34,5 +35,5 @@
 			</md-list-item>
 		</md-list>
 	</md-content>
-	
+
 </md-sidenav>
