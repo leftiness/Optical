@@ -1,8 +1,8 @@
 <div class="modules-lenses-view module-header">
-	<table st-table="records" 
-		   st-safe-src="safeRecords"
-		   class="table table-striped"
-		   >
+	<table st-table="records"
+		st-safe-src="safeRecords"
+		class="table table-striped"
+		>
 		<thead>
 			<tr>
 				<th ng-repeat="knob in knobs"
@@ -13,41 +13,41 @@
 				</th>
 			</tr>
 			<tr>
-				<th ng-repeat="knob in knobs" 
+				<th ng-repeat="knob in knobs"
 					ng-switch on="knob.type"
 					>
 					<div ng-switch-when="select">
-						<md-select placeholder="pick one" 
-								   ng-model="query[knob.name]"
-								   st-search="{{knob.name}}"
-								   st-delay="0"
-								   >
+						<md-select placeholder="pick one"
+							ng-model="query[knob.name]"
+							st-search="{{knob.name}}"
+							st-delay="0"
+							>
 							<md-option value="">pick one</md-option>
 							<md-option ng-repeat="value in knob.values"
-									   value="{{value}}"
-									   >
+								value="{{value}}"
+								>
 								{{value}}
 							</md-option>
 						</md-select>
 					</div>
 					<div ng-switch-when="checkbox">
 						<md-checkbox ng-model="query[knob.name]"
-									 st-search="{{knob.name}}"
-									 st-delay="0"
-									 >
+							st-search="{{knob.name}}"
+							st-delay="0"
+							>
 						</md-checkbox>
 					</div>
 					<div ng-switch-when="lens"></div>
 					<div ng-switch-default>
 						<md-input-container md-no-float>
 							<input type="{{knob.type}}"
-								   placeholder="type here"
-								   ng-model="query[knob.name]"
-								   st-search="{{knob.name}}"
-								   st-delay="0"
-								   >
+								placeholder="type here"
+								ng-model="query[knob.name]"
+								st-search="{{knob.name}}"
+								st-delay="0"
+								/>
 						</md-input-container>
-					</div>						
+					</div>
 				</th>
 			</tr>
 		</thead>
@@ -59,15 +59,15 @@
 				<td ng-repeat="knob in knobs">
 					<div ng-if="knob.type === 'lens'">
 						<md-button class="md-primary md-raised"
-								   ui-sref="lenses(
-											{ id: knob.name 
-											+ '!' 
-											+ params.id
-											, q: 'parent:' 
-											+ record.id
-											})"
-								   >
-							>>
+							ui-sref="lenses(
+								{ id: knob.name
+								+ '!'
+								+ params.id
+								, q: 'parent:'
+								+ record.id
+								})"
+							>
+							<i class="fa fa-angle-double-right"></i>
 						</md-button>
 					</div>
 					<div ng-if="knob.type !== 'lens'">
