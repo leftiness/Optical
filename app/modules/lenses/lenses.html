@@ -15,39 +15,32 @@
 			<tr>
 				<th ng-repeat="knob in knobs"
 					ng-switch on="knob.type"
+					st-search="{{knob.name}}"
+					st-delay="0"
 					>
-					<div ng-switch-when="select">
-						<md-select placeholder="pick one"
-							ng-model="query[knob.name]"
-							st-search="{{knob.name}}"
-							st-delay="0"
+					<md-select ng-switch-when="select"
+						placeholder="pick one"
+						ng-model="query[knob.name]"
+						>
+						<md-option value="">pick one</md-option>
+						<md-option ng-repeat="value in knob.values"
+							value="{{value}}"
 							>
-							<md-option value="">pick one</md-option>
-							<md-option ng-repeat="value in knob.values"
-								value="{{value}}"
-								>
-								{{value}}
-							</md-option>
-						</md-select>
-					</div>
+							{{value}}
+						</md-option>
+					</md-select>
 					<div ng-switch-when="checkbox">
-						<md-checkbox ng-model="query[knob.name]"
-							st-search="{{knob.name}}"
-							st-delay="0"
-							>
-						</md-checkbox>
+						<md-checkbox ng-model="query[knob.name]"></md-checkbox>
 					</div>
 					<div ng-switch-when="lens"></div>
-					<div ng-switch-default>
-						<md-input-container md-no-float>
-							<input type="{{knob.type}}"
-								placeholder="type here"
-								ng-model="query[knob.name]"
-								st-search="{{knob.name}}"
-								st-delay="0"
-								/>
-						</md-input-container>
-					</div>
+					<md-input-container ng-switch-default
+						md-no-float
+						>
+						<input type="{{knob.type}}"
+							placeholder="type here"
+							ng-model="query[knob.name]"
+							/>
+					</md-input-container>
 				</th>
 			</tr>
 		</thead>
@@ -57,19 +50,15 @@
 				st-select-mode="multiple"
 				>
 				<td ng-repeat="knob in knobs">
-					<div ng-if="knob.type === 'lens'">
-						<md-button class="md-primary md-raised"
-							ui-sref="lenses(
-								{ id: knob.name
-								+ '!'
-								+ params.id
-								, q: 'parent:'
-								+ record.id
-								})"
-							>
-							<i class="fa fa-angle-double-right"></i>
-						</md-button>
-					</div>
+					<md-button ng-if="knob.type === 'lens'"
+						class="md-primary md-raised"
+						ui-sref="lenses(
+							{ id: knob.name + '!' + params.id
+							, q: 'parent:' + record.id
+							})"
+						>
+						<i class="fa fa-angle-double-right"></i>
+					</md-button>
 					<div ng-if="knob.type !== 'lens'">
 						{{record[knob.name]}}
 					</div>
