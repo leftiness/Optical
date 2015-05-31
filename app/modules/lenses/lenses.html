@@ -12,7 +12,7 @@
 					{{knob.name}}
 				</th>
 			</tr>
-			<tr>
+			<tr ng-show="showKnobs()">
 				<th ng-repeat="knob in knobs"
 					ng-switch on="knob.type"
 					st-search="{{knob.name}}"
@@ -57,7 +57,7 @@
 							, q: 'parent:' + record.id
 							})"
 						>
-						<i class="fa fa-angle-double-right"></i>
+						<i class="fa fa-chevron-right"></i>
 					</md-button>
 					<div ng-if="knob.type !== 'lens'">
 						{{record[knob.name]}}
@@ -67,3 +67,48 @@
 		</tbody>
 	</table>
 </div>
+
+<md-list class="buttons"
+	ng-mouseover="show.buttons = true"
+	ng-mouseleave="show.buttons = false"
+	>
+	<div ng-show="show.buttons">
+		<md-list-item>
+			<md-button class="md-accent md-hue-1 md-fab"
+				ng-click="toggleKnobs()"
+				>
+				<i class="fa fa-filter"></i>
+			</md-button>
+		</md-list-item>
+		<md-list-item ng-show="countSelected() !== 0">
+			<md-button class="md-accent md-hue-1 md-fab"
+				ng-click="clear()"
+				>
+				<i class="fa fa-paint-brush"></i>
+			</md-button>
+		</md-list-item>
+		<md-list-item ng-show="countSelected() !== 0">
+			<md-button class="md-primary md-hue-2 md-fab"
+				ng-click="delete()"
+				>
+				<i class="fa fa-trash"></i>
+			</md-button>
+		</md-list-item>
+		<md-list-item ng-show="countSelected() === 1">
+			<md-button class="md-primary md-hue-2 md-fab"
+				ng-click="edit()"
+				>
+				<i class="fa fa-pencil"></i>
+			</md-button>
+		</md-list-item>
+	</div>
+	<md-list-item>
+		<md-button class="md-accent md-hue-2 md-fab"
+			ng-focus="show.buttons = true"
+			ng-blur="show.buttons = false"
+			ng-click="add()"
+			>
+			<i class="fa fa-plus"></i>
+		</md-button>
+	</md-list-item>
+</md-list>
