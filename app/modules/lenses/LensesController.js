@@ -2,8 +2,8 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 	'use strict';
 
 	var _ = CONSTANTS.lodash;
+
 	$scope.params = $stateParams;
-	$scope.query = {};
 
 	$scope.showKnobs = function () {
 		return _.isUndefined(_.get($scope, 'show.knobs')) ?
@@ -12,9 +12,7 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 	};
 
 	$scope.toggleKnobs = function () {
-		$scope.showKnobs() ?
-		_.set($scope, 'show.knobs', false) :
-		_.set($scope, 'show.knobs', true);
+		_.set($scope, 'show.knobs', !$scope.showKnobs());
 	};
 
 	$scope.countSelected = function () {
@@ -23,8 +21,16 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 	};
 
 	$scope.delete = function () {
-		$scope.records = _.reject($scope.records, {'isSelected': true});
-		// TODO: Implement REST
+		_.filter($scope.records, {'isSelected': true}).forEach(function (record) {
+			record.all(record.id).remove().then(
+				function () {
+					$scope.records = _.without($scope.records, record);
+				},
+				function () {
+					// TODO: Alert user that deleting failed
+				}
+			);
+		});
 	};
 
 	$scope.edit = function () {
@@ -54,7 +60,7 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 				$scope.knobs = [];
 			}
 		);
-		Restangular.one('lenses', $stateParams.id).getList('records').then(
+		Restangular.one('lenses', $stateParams.id).all('records').getList().then(
 			function (result) {
 				$scope.safeRecords = result;
 				$scope.records = [].concat($scope.safeRecords);
@@ -65,7 +71,7 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 				$scope.records = [];
 			}
 		);
-	};
+	}
 
 	init();
 
