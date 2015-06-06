@@ -77,6 +77,11 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 
 }
 
-LensesCtrl.$inject = ['$scope', '$stateParams', '$mdMedia', 'Restangular', 'CONSTANTS'];
+LensesCtrl.$inject = ['$scope',
+	'$stateParams',
+	'$mdMedia',
+	'Restangular',
+	'CONSTANTS'
+];
 
 module.exports = LensesCtrl;
