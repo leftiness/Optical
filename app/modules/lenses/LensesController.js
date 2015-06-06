@@ -44,25 +44,30 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 		});
 	};
 
-	Restangular.one('lenses', $stateParams.id).getList('records').then(
-		function (records) {
-			$scope.safeRecords = records;
-			$scope.records = [].concat($scope.safeRecords);
-		},
-		function () {
-			$scope.safeRecords = [];
-			$scope.records = [];
-		}
-	);
+	function init() {
+		Restangular.one('lenses', $stateParams.id).getList().then(
+			function (result) {
+				$scope.knobs = _.sortBy(result, 'order');
+			},
+			function () {
+				// TODO: Alert user that loading knobs failed
+				$scope.knobs = [];
+			}
+		);
+		Restangular.one('lenses', $stateParams.id).getList('records').then(
+			function (result) {
+				$scope.safeRecords = result;
+				$scope.records = [].concat($scope.safeRecords);
+			},
+			function () {
+				// TODO: Alert the user that loading the records failed
+				$scope.safeRecords = [];
+				$scope.records = [];
+			}
+		);
+	};
 
-	Restangular.one('lenses', $stateParams.id).getList().then(
-		function (knobs) {
-			$scope.knobs = _.sortBy(knobs, 'order');
-		},
-		function () {
-			$scope.knobs = [];
-		}
-	);
+	init();
 
 }
 
