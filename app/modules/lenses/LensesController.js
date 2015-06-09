@@ -15,11 +15,6 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 		_.set($scope, 'show.knobs', !$scope.showKnobs());
 	};
 
-	$scope.countSelected = function () {
-		var count = _.countBy($scope.records, 'isSelected')[true];
-		return _.isUndefined(count) ? 0 : count;
-	};
-
 	$scope.delete = function () {
 		_.filter($scope.records, {'isSelected': true}).forEach(function (record) {
 			record.all(record.id).remove().then(

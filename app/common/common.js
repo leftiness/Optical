@@ -32,5 +32,6 @@ module.exports = angular.module('common',
 		require('./constants').name,
 		require('./directives').name,
 		require('./resources').name,
+		require('./filters').name,
 		require('./services').name
 	]);

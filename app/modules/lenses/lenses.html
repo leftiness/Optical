@@ -67,7 +67,6 @@
 		</tbody>
 	</table>
 </div>
-
 <md-list class="buttons"
 	ng-mouseover="show.buttons = true"
 	ng-mouseleave="show.buttons = false"
@@ -80,21 +79,21 @@
 				<i class="fa fa-filter"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="countSelected() !== 0">
+		<md-list-item ng-show="!!(records | selected)">
 			<md-button class="md-accent md-hue-1 md-fab"
 				ng-click="clear()"
 				>
 				<i class="fa fa-paint-brush"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="countSelected() !== 0">
+		<md-list-item ng-show="!!(records | selected)">
 			<md-button class="md-primary md-hue-2 md-fab"
 				ng-click="delete()"
 				>
 				<i class="fa fa-trash"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="countSelected() === 1">
+		<md-list-item ng-show="(records | selected) === 1">
 			<md-button class="md-primary md-hue-2 md-fab"
 				ng-click="edit()"
 				>
