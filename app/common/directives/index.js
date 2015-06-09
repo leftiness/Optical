@@ -1,2 +1,2 @@
 module.exports = angular.module('common.directives', [])
-	.directive('directiveName', require('./directiveName.js'));
+	.directive('mediaShow', require('./mediaShowDirective.js'));

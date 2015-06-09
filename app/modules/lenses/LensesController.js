@@ -5,16 +5,6 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 
 	$scope.params = $stateParams;
 
-	$scope.showKnobs = function () {
-		return _.isUndefined(_.get($scope, 'show.knobs')) ?
-			$mdMedia('gt-lg') :
-			$scope.show.knobs;
-	};
-
-	$scope.toggleKnobs = function () {
-		_.set($scope, 'show.knobs', !$scope.showKnobs());
-	};
-
 	$scope.delete = function () {
 		_.filter($scope.records, {'isSelected': true}).forEach(function (record) {
 			record.all(record.id).remove().then(

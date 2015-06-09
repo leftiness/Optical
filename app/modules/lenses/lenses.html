@@ -12,7 +12,7 @@
 					{{knob.name}}
 				</th>
 			</tr>
-			<tr ng-show="showKnobs()">
+			<tr ng-show="show.knobs || ('gt-lg' | media)">
 				<th ng-repeat="knob in knobs"
 					ng-switch on="knob.type"
 					st-search="{{knob.name}}"
@@ -72,9 +72,9 @@
 	ng-mouseleave="show.buttons = false"
 	>
 	<div ng-show="show.buttons">
-		<md-list-item>
+		<md-list-item media-show not media="gt-lg">
 			<md-button class="md-accent md-hue-1 md-fab"
-				ng-click="toggleKnobs()"
+				ng-click="show.knobs = !!!show.knobs"
 				>
 				<i class="fa fa-filter"></i>
 			</md-button>
