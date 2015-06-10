@@ -1,4 +1,4 @@
-function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
+function LensesCtrl($scope, LensesService, $stateParams, CONSTANTS) {
 	'use strict';
 
 	var _ = CONSTANTS.lodash;
@@ -35,37 +35,21 @@ function LensesCtrl($scope, $stateParams, $mdMedia, Restangular, CONSTANTS) {
 		});
 	};
 
-	function init() {
-		Restangular.one('lenses', $stateParams.id).getList().then(
-			function (result) {
-				$scope.knobs = _.sortBy(result, 'order');
-			},
-			function () {
-				// TODO: Alert user that loading knobs failed
-				$scope.knobs = [];
-			}
-		);
-		Restangular.one('lenses', $stateParams.id).all('records').getList().then(
-			function (result) {
-				$scope.safeRecords = result;
-				$scope.records = [].concat($scope.safeRecords);
-			},
-			function () {
-				// TODO: Alert the user that loading the records failed
-				$scope.safeRecords = [];
-				$scope.records = [];
-			}
-		);
-	}
-
-	init();
+	(function init() {
+		LensesService.getKnobs().then(function (data) {
+			$scope.knobs = data;
+		});
+		LensesService.getRecords().then(function (data) {
+			$scope.records = data;
+			$scope.safeRecords = data;
+		})
+	})();
 
 }
 
 LensesCtrl.$inject = ['$scope',
+	'LensesService',
 	'$stateParams',
-	'$mdMedia',
-	'Restangular',
 	'CONSTANTS'
 ];
 
