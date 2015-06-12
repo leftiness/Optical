@@ -6,15 +6,11 @@ function LensesCtrl($scope, LensesService, $stateParams, CONSTANTS) {
 	$scope.params = $stateParams;
 
 	$scope.delete = function () {
-		_.filter($scope.records, {'isSelected': true}).forEach(function (record) {
-			record.all(record.id).remove().then(
-				function () {
-					$scope.records = _.without($scope.records, record);
-				},
-				function () {
-					// TODO: Alert user that deleting failed
-				}
-			);
+		var selected = _.filter($scope.records, 'isSelected');
+		LensesService.deleteRecords(selected).then(function (good) {
+			$scope.records = _.reject($scope.records, function (record) {
+				return _.includes(good, record.id);
+			});
 		});
 	};
 
@@ -36,12 +32,12 @@ function LensesCtrl($scope, LensesService, $stateParams, CONSTANTS) {
 	};
 
 	(function init() {
-		LensesService.getKnobs().then(function (data) {
-			$scope.knobs = data;
+		LensesService.getKnobs().then(function (knobs) {
+			$scope.knobs = knobs;
 		});
-		LensesService.getRecords().then(function (data) {
-			$scope.records = data;
-			$scope.safeRecords = data;
+		LensesService.getRecords().then(function (records) {
+			$scope.records = records;
+			$scope.safeRecords = records;
 		})
 	})();
 
