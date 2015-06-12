@@ -1,26 +1,26 @@
 <div class="modules-lenses-view module-header">
-	<table st-table="records"
-		st-safe-src="safeRecords"
+	<table st-table="lenses.records"
+		st-safe-src="lenses.safeRecords"
 		class="table table-striped"
 		>
 		<thead>
 			<tr>
-				<th ng-repeat="knob in knobs"
+				<th ng-repeat="knob in lenses.knobs"
 					st-sort="{{knob.name}}"
 					st-skip-natural="true"
 					>
 					{{knob.name}}
 				</th>
 			</tr>
-			<tr ng-show="show.knobs || ('gt-lg' | media)">
-				<th ng-repeat="knob in knobs"
+			<tr ng-show="lenses.show.knobs || ('gt-lg' | media)">
+				<th ng-repeat="knob in lenses.knobs"
 					ng-switch on="knob.type"
 					st-search="{{knob.name}}"
 					st-delay="0"
 					>
 					<md-select ng-switch-when="select"
 						placeholder="pick one"
-						ng-model="query[knob.name]"
+						ng-model="lenses.query[knob.name]"
 						>
 						<md-option value="">pick one</md-option>
 						<md-option ng-repeat="value in knob.values"
@@ -30,7 +30,7 @@
 						</md-option>
 					</md-select>
 					<div ng-switch-when="checkbox">
-						<md-checkbox ng-model="query[knob.name]"></md-checkbox>
+						<md-checkbox ng-model="lenses.query[knob.name]"></md-checkbox>
 					</div>
 					<div ng-switch-when="lens"></div>
 					<md-input-container ng-switch-default
@@ -38,18 +38,18 @@
 						>
 						<input type="{{knob.type}}"
 							placeholder="type here"
-							ng-model="query[knob.name]"
+							ng-model="lenses.query[knob.name]"
 							/>
 					</md-input-container>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="record in records"
+			<tr ng-repeat="record in lenses.records"
 				st-select-row="record"
 				st-select-mode="multiple"
 				>
-				<td ng-repeat="knob in knobs">
+				<td ng-repeat="knob in lenses.knobs">
 					<md-button ng-if="knob.type === 'lens'"
 						class="md-primary md-raised"
 						ui-sref="lenses(
@@ -68,34 +68,34 @@
 	</table>
 </div>
 <md-list class="buttons"
-	ng-mouseover="show.buttons = true"
-	ng-mouseleave="show.buttons = false"
+	ng-mouseover="lenses.show.buttons = true"
+	ng-mouseleave="lenses.show.buttons = false"
 	>
-	<div ng-show="show.buttons">
+	<div ng-show="lenses.show.buttons">
 		<md-list-item media-show not media="gt-lg">
 			<md-button class="md-accent md-hue-1 md-fab"
-				ng-click="show.knobs = !!!show.knobs"
+				ng-click="lenses.show.knobs = !!!lenses.show.knobs"
 				>
 				<i class="fa fa-filter"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="!!(records | selected)">
+		<md-list-item ng-show="!!(lenses.records | selected)">
 			<md-button class="md-accent md-hue-1 md-fab"
-				ng-click="clear()"
+				ng-click="lenses.clear()"
 				>
 				<i class="fa fa-paint-brush"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="!!(records | selected)">
+		<md-list-item ng-show="!!(lenses.records | selected)">
 			<md-button class="md-primary md-hue-2 md-fab"
-				ng-click="delete()"
+				ng-click="lenses.delete()"
 				>
 				<i class="fa fa-trash"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="(records | selected) === 1">
+		<md-list-item ng-show="(lenses.records | selected) === 1">
 			<md-button class="md-primary md-hue-2 md-fab"
-				ng-click="edit()"
+				ng-click="lense.edit()"
 				>
 				<i class="fa fa-pencil"></i>
 			</md-button>
@@ -103,9 +103,9 @@
 	</div>
 	<md-list-item>
 		<md-button class="md-accent md-hue-2 md-fab"
-			ng-focus="show.buttons = true"
-			ng-blur="show.buttons = false"
-			ng-click="add()"
+			ng-focus="lenses.show.buttons = true"
+			ng-blur="lenses.show.buttons = false"
+			ng-click="lenses.add()"
 			>
 			<i class="fa fa-plus"></i>
 		</md-button>
