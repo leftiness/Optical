@@ -1,4 +1,12 @@
-var LensesService = function ($stateParams, $q, Restangular, CONSTANTS) {
+var LensesService = function (
+		NotificationService,
+		$stateParams,
+		$q,
+		Restangular,
+		CONSTANTS,
+		MESSAGES
+	) {
+
 	'use strict';
 
 	var _ = CONSTANTS.lodash;
@@ -10,7 +18,8 @@ var LensesService = function ($stateParams, $q, Restangular, CONSTANTS) {
 				def.resolve(_.sortBy(result, 'order'));
 			},
 			function () {
-				// TODO: Alert user that loading knobs failed
+				var message = MESSAGES.lenses.get.knobs.failure;
+				NotificationService.show(message);
 				def.resolve([]);
 			}
 		);
@@ -24,7 +33,8 @@ var LensesService = function ($stateParams, $q, Restangular, CONSTANTS) {
 				def.resolve(result);
 			},
 			function () {
-				// TODO: Alert user that loading records failed
+				var message = MESSAGES.lenses.get.records.failure;
+				NotificationService.show(message);
 				def.resolve([]);
 			}
 		);
@@ -50,7 +60,9 @@ var LensesService = function ($stateParams, $q, Restangular, CONSTANTS) {
 			proms.push(prom);
 		});
 		$q.all(proms).then(function () {
-			// TODO: NotificationService.error(These ones were bad: bad);
+			// TODO: NotificationService.error(These ones were bad: bad) ?
+			var message = MESSAGES.lenses.delete.records.failure;
+			NotificationService.show(message);
 			def.resolve(good);
 		});
 		return def.promise;
@@ -58,6 +70,13 @@ var LensesService = function ($stateParams, $q, Restangular, CONSTANTS) {
 
 };
 
-LensesService.$inject = ['$stateParams', '$q', 'Restangular', 'CONSTANTS'];
+LensesService.$inject = [
+	'NotificationService',
+	'$stateParams',
+	'$q',
+	'Restangular',
+	'CONSTANTS',
+	'MESSAGES'
+	];
 
 module.exports = LensesService;
