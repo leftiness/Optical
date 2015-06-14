@@ -1,15 +1,25 @@
-function SidenavCtrl($scope, $mdSidenav, Restangular, CONSTANTS) {
+function SidenavCtrl(LensesService, Restangular, $mdSidenav, CONSTANTS) {
 	'use strict';
-	Restangular.one('lenses', 'lenses').getList('records').then(
-		function (lenses) {
-			$scope.lenses = CONSTANTS.lodash.sortBy(lenses, 'order');
-		},
-		function () {
-			$scope.lenses = [];
-		}
-	);
+
+	var self = this;
+	var _ = CONSTANTS.lodash;
+
+	this.lenses = [];
+
+	(function init() {
+		// TODO: LensesService instead of Restangular.
+		Restangular.one('lenses', 'lenses').getList('records').then(
+			function (lenses) {
+				self.lenses = _.sortBy(lenses, 'order');
+			},
+			function () {
+				self.lenses = [];
+			}
+		);
+	})();
+
 }
 
-SidenavCtrl.$inject = ['$scope', '$mdSidenav', 'Restangular', 'CONSTANTS'];
+SidenavCtrl.$inject = ['LensesService', 'Restangular', '$mdSidenav', 'CONSTANTS'];
 
 module.exports = SidenavCtrl;
