@@ -4,7 +4,7 @@ var CONSTANTS = (function () {
 	var c = {};
 
 	c.lodash = window._;
-	
+
 	return c;
 }());
 

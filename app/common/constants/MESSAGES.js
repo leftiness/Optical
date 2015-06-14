@@ -12,11 +12,11 @@ var MESSAGES = (function () {
 	m.lenses.get.knobs = {};
 	m.lenses.delete.records = {};
 
-	m.common.ok = "OK";
+	m.common.ok = 'OK';
 
-	m.lenses.get.records.failure = "Failed to get records";
-	m.lenses.get.knobs.failure = "Failed to get knobs";
-	m.lenses.delete.records.failure = "Failed to delete some records";
+	m.lenses.get.records.failure = 'Failed to get records';
+	m.lenses.get.knobs.failure = 'Failed to get knobs';
+	m.lenses.delete.records.failure = 'Failed to delete some records';
 
 	return m;
 }());
