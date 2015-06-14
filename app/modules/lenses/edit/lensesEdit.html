@@ -1,3 +1,27 @@
-<div class="modules-lenses-view module-header">
-	Editing!
+<div class="modules-lenses-edit-view module-header"
+	layout="column"
+	flex="33"
+	>
+	<h4>Visible values</h4>
+	<table>
+		<tr ng-repeat="knob in edit.knobs">
+			<td>
+				<label layout-padding
+					layout-margin
+					>
+					{{knob.name}}
+				</label>
+			</td>
+			<td>
+				<common-input model="edit.record"
+					name="knob.name"
+					type="knob.type"
+					values="knob.values"
+					>
+				</common-input>
+			</td>
+		</tr>
+	</table>
+	<h4>Other values</h4>
+	Todo
 </div>
