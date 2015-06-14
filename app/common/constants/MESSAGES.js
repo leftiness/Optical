@@ -5,18 +5,18 @@ var MESSAGES = (function () {
 
 	m.common = {};
 
-	m.lenses = {};
-	m.lenses.get = {};
-	m.lenses.delete = {};
-	m.lenses.get.records = {};
-	m.lenses.get.knobs = {};
-	m.lenses.delete.records = {};
-
 	m.common.ok = 'OK';
 
-	m.lenses.get.records.failure = 'Failed to get records';
-	m.lenses.get.knobs.failure = 'Failed to get knobs';
-	m.lenses.delete.records.failure = 'Failed to delete some records';
+	m.crud = {};
+	m.crud.create = {};
+	m.crud.retrieve = {};
+	m.crud.update = {};
+	m.crud.delete = {};
+
+	m.crud.create.failure = 'Error while creating records';
+	m.crud.retrieve.failure = 'Error while retrieving records';
+	m.crud.update.failure = 'Error while updating records';
+	m.crud.delete.failure = 'Error while deleting records';
 
 	return m;
 }());

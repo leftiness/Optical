@@ -4,16 +4,15 @@ function LensesSearchCtrl(LensesService, $stateParams, CONSTANTS) {
 	var _ = CONSTANTS.lodash;
 	var self = this;
 
-	// TODO: Somehow get $stateParams reference out of this controller.
 	this.params = $stateParams;
-
 	this.records = [];
 	this.safeRecords = [];
 	this.knobs = [];
 
 	this.delete = function () {
 		var selected = _.filter(self.records, 'isSelected');
-		LensesService.deleteRecords(selected).then(function (good) {
+		var lens = self.params.lens;
+		LensesService.deleteRecords(lens, selected).then(function (good) {
 			self.records = _.reject(self.records, function (record) {
 				return _.includes(good, record.id);
 			});
@@ -37,10 +36,11 @@ function LensesSearchCtrl(LensesService, $stateParams, CONSTANTS) {
 	};
 
 	(function init() {
-		LensesService.getKnobs().then(function (knobs) {
+		var lens = self.params.lens;
+		LensesService.getAllKnobs(lens).then(function (knobs) {
 			self.knobs = knobs;
 		});
-		LensesService.getRecords().then(function (records) {
+		LensesService.getAllRecords(lens).then(function (records) {
 			self.records = records;
 			self.safeRecords = records;
 		});
