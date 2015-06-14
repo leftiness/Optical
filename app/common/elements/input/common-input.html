@@ -1,0 +1,24 @@
+<div ng-switch on="type">
+	<md-select ng-switch-when="select"
+		placeholder="pick one"
+		ng-model="model[name]"
+		>
+		<md-option ng-repeat="value in values"
+			value="{{value}}"
+			>
+			{{value}}
+		</md-option>
+	</md-select>
+	<div ng-switch-when="checkbox">
+		<md-checkbox ng-model="model[name]"></md-checkbox>
+	</div>
+	<div ng-switch-when="lens"></div>
+	<md-input-container ng-switch-default
+		md-no-float
+		>
+		<input type="{{type}}"
+			placeholder="type here"
+			ng-model="model[name]"
+			/>
+	</md-input-container>
+</div>
