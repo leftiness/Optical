@@ -1,26 +1,26 @@
 <div class="modules-lenses-view module-header">
-	<table st-table="lenses.records"
-		st-safe-src="lenses.safeRecords"
+	<table st-table="search.records"
+		st-safe-src="search.safeRecords"
 		class="table table-striped"
 		>
 		<thead>
 			<tr>
-				<th ng-repeat="knob in lenses.knobs"
+				<th ng-repeat="knob in search.knobs"
 					st-sort="{{knob.name}}"
 					st-skip-natural="true"
 					>
 					{{knob.name}}
 				</th>
 			</tr>
-			<tr ng-show="lenses.show.knobs || ('gt-lg' | media)">
-				<th ng-repeat="knob in lenses.knobs"
+			<tr ng-show="search.show.knobs || ('gt-lg' | media)">
+				<th ng-repeat="knob in search.knobs"
 					ng-switch on="knob.type"
 					st-search="{{knob.name}}"
 					st-delay="0"
 					>
 					<md-select ng-switch-when="select"
 						placeholder="pick one"
-						ng-model="lenses.query[knob.name]"
+						ng-model="search.query[knob.name]"
 						>
 						<md-option value="">pick one</md-option>
 						<md-option ng-repeat="value in knob.values"
@@ -30,7 +30,7 @@
 						</md-option>
 					</md-select>
 					<div ng-switch-when="checkbox">
-						<md-checkbox ng-model="lenses.query[knob.name]"></md-checkbox>
+						<md-checkbox ng-model="search.query[knob.name]"></md-checkbox>
 					</div>
 					<div ng-switch-when="lens"></div>
 					<md-input-container ng-switch-default
@@ -38,22 +38,22 @@
 						>
 						<input type="{{knob.type}}"
 							placeholder="type here"
-							ng-model="lenses.query[knob.name]"
+							ng-model="search.query[knob.name]"
 							/>
 					</md-input-container>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="record in lenses.records"
+			<tr ng-repeat="record in search.records"
 				st-select-row="record"
 				st-select-mode="multiple"
 				>
-				<td ng-repeat="knob in lenses.knobs">
+				<td ng-repeat="knob in search.knobs">
 					<md-button ng-if="knob.type === 'lens'"
 						class="md-primary md-raised"
-						ui-sref="lenses(
-							{ id: knob.name + '!' + params.id
+						ui-sref="lenses.search(
+							{ lens: knob.name + '!' + search.params.lens
 							, q: 'parent:' + record.id
 							})"
 						>
@@ -68,34 +68,37 @@
 	</table>
 </div>
 <md-list class="buttons"
-	ng-mouseover="lenses.show.buttons = true"
-	ng-mouseleave="lenses.show.buttons = false"
+	ng-mouseover="search.show.buttons = true"
+	ng-mouseleave="search.show.buttons = false"
 	>
-	<div ng-show="lenses.show.buttons">
+	<div ng-show="search.show.buttons">
 		<md-list-item media-show not media="gt-lg">
 			<md-button class="md-accent md-hue-1 md-fab"
-				ng-click="lenses.show.knobs = !!!lenses.show.knobs"
+				ng-click="search.show.knobs = !!!search.show.knobs"
 				>
 				<i class="fa fa-filter"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="!!(lenses.records | selected)">
+		<md-list-item ng-show="!!(search.records | selected)">
 			<md-button class="md-accent md-hue-1 md-fab"
-				ng-click="lenses.clear()"
+				ng-click="search.clear()"
 				>
 				<i class="fa fa-paint-brush"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="!!(lenses.records | selected)">
+		<md-list-item ng-show="!!(search.records | selected)">
 			<md-button class="md-primary md-hue-2 md-fab"
-				ng-click="lenses.delete()"
+				ng-click="search.delete()"
 				>
 				<i class="fa fa-trash"></i>
 			</md-button>
 		</md-list-item>
-		<md-list-item ng-show="(lenses.records | selected) === 1">
+		<md-list-item ng-show="(search.records | selected) === 1">
 			<md-button class="md-primary md-hue-2 md-fab"
-				ng-click="lense.edit()"
+				ui-sref="lenses.edit(
+				{ lens: search.params.lens
+				, record: (search.records | edit)
+				})"
 				>
 				<i class="fa fa-pencil"></i>
 			</md-button>
@@ -103,9 +106,9 @@
 	</div>
 	<md-list-item>
 		<md-button class="md-accent md-hue-2 md-fab"
-			ng-focus="lenses.show.buttons = true"
-			ng-blur="lenses.show.buttons = false"
-			ng-click="lenses.add()"
+			ng-focus="search.show.buttons = true"
+			ng-blur="search.show.buttons = false"
+			ng-click="search.add()"
 			>
 			<i class="fa fa-plus"></i>
 		</md-button>

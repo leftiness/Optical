@@ -13,7 +13,7 @@ var LensesService = function (
 
 	this.getKnobs = function () {
 		var def = $q.defer();
-		Restangular.one('lenses', $stateParams.id).getList().then(
+		Restangular.one('lenses', $stateParams.lens).getList().then(
 			function (result) {
 				def.resolve(_.sortBy(result, 'order'));
 			},
@@ -28,7 +28,7 @@ var LensesService = function (
 
 	this.getRecords = function () {
 		var def = $q.defer();
-		Restangular.one('lenses', $stateParams.id).all('records').getList().then(
+		Restangular.one('lenses', $stateParams.lens).all('records').getList().then(
 			function (result) {
 				def.resolve(result);
 			},
@@ -47,7 +47,7 @@ var LensesService = function (
 		var good = [];
 		var bad = [];
 		records.forEach(function (record) {
-			var rest = Restangular.one('lenses', $stateParams.id).all('records');
+			var rest = Restangular.one('lenses', $stateParams.lens).all('records');
 			var prom = rest.all(record.id).remove().then(
 				function () {
 					good.push(record.id);
