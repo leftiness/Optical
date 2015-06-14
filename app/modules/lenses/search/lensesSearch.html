@@ -1,4 +1,4 @@
-<div class="modules-lenses-view module-header">
+<div class="modules-lenses-search-view module-header">
 	<table st-table="search.records"
 		st-safe-src="search.safeRecords"
 		class="table table-striped"
@@ -14,33 +14,15 @@
 			</tr>
 			<tr ng-show="search.show.knobs || ('gt-lg' | media)">
 				<th ng-repeat="knob in search.knobs"
-					ng-switch on="knob.type"
 					st-search="{{knob.name}}"
 					st-delay="0"
 					>
-					<md-select ng-switch-when="select"
-						placeholder="pick one"
-						ng-model="search.query[knob.name]"
+					<common-input model="search.record"
+						name="knob.name"
+						type="knob.type"
+						values="knob.values"
 						>
-						<md-option value="">pick one</md-option>
-						<md-option ng-repeat="value in knob.values"
-							value="{{value}}"
-							>
-							{{value}}
-						</md-option>
-					</md-select>
-					<div ng-switch-when="checkbox">
-						<md-checkbox ng-model="search.query[knob.name]"></md-checkbox>
-					</div>
-					<div ng-switch-when="lens"></div>
-					<md-input-container ng-switch-default
-						md-no-float
-						>
-						<input type="{{knob.type}}"
-							placeholder="type here"
-							ng-model="search.query[knob.name]"
-							/>
-					</md-input-container>
+					</common-input>
 				</th>
 			</tr>
 		</thead>
