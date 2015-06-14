@@ -11,8 +11,7 @@ var NotificationService = function ($mdToast, MESSAGES) {
 	 * https://github.com/angular/material/issues/1106
 	 */
 
-	this.show = function (message) {
-		// TODO: Messages in constants.
+	this.toast = function (message) {
 		var toast = $mdToast.simple()
 			.action(MESSAGES.common.ok)
 			.content(message)

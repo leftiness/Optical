@@ -19,7 +19,7 @@ var LensesService = function (
 			},
 			function () {
 				var message = MESSAGES.lenses.get.knobs.failure;
-				NotificationService.show(message);
+				NotificationService.toast(message);
 				def.resolve([]);
 			}
 		);
@@ -34,7 +34,7 @@ var LensesService = function (
 			},
 			function () {
 				var message = MESSAGES.lenses.get.records.failure;
-				NotificationService.show(message);
+				NotificationService.toast(message);
 				def.resolve([]);
 			}
 		);
@@ -62,7 +62,7 @@ var LensesService = function (
 		$q.all(proms).then(function () {
 			// TODO: NotificationService.error(These ones were bad: bad) ?
 			var message = MESSAGES.lenses.delete.records.failure;
-			NotificationService.show(message);
+			NotificationService.toast(message);
 			def.resolve(good);
 		});
 		return def.promise;
